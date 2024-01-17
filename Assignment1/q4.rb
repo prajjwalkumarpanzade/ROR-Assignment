@@ -1,6 +1,6 @@
 mystr = "Hello I am Prajjwalkumar Panzade my email id is prajjwalbpanzade22@gmail.com, Gender - M, amount = Rs.120000,my contact number = 9112422777"
 
-name = name = mystr.match(/[A-Z]\w+ [A-Z]\w+/)[0]    
+name = mystr.match(/[A-Z]\w+ [A-Z]\w+/)[0]    
 puts "Name #{name}" 
 
 email = mystr.match(/[\w.]+@[\w.]+/)[0]
