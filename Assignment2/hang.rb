@@ -8,38 +8,39 @@ puts "Guess the name of marvel character"
 #print name.join('')
 puts ""
 blanks = ('_'*name.length).chars 
-
+puts "You have #{name.length} no. of chances"
 print blanks.join('')
 puts ""
-
 j = 0
 while j < ((name.length))  do       #Loop for number of chances
   print "Guess letter = "
   input_letter = gets.chomp         #Guess letter
   puts ""
-
-
   for i in (0..name.length-1)  do   #Replacing _ with actual gussed letters
     if name[i] == input_letter      #checking guessed letter with original word
       blanks.delete_at(i)           #Deleting _ from array
       blanks.insert(i,input_letter) #Insert guessed letter in the _ array
       puts ""
-      
-      
     end
   end
+  if blanks.include?(input_letter) == false  #Checking if guessed letter is wrong
+    puts "Wrong Guess"
+  else 
+    puts "Correct Guess"
+  end
+  puts ""
+  puts "You have #{name.length-j-1} no. of chances left"
   print blanks.join('') 
   puts ""
-
   if blanks == name   #Check for guessed word and original word and winnig condition
-  puts "You Won"
-  break
-end
-
+    puts ""
+    puts "You Won"
+    break
+  end
   j=j+1
 end
 if blanks != name #Loosing condition
+  puts ""
   puts "You Loose"
 end
   puts blanks.join('')
-
