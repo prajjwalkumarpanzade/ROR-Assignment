@@ -1,11 +1,8 @@
 names = ["ironman","captainamerica","hulk","blackwidow","thor"]  #List of words
-
 name = names[rand(names.length)]     #Choosing random word from list 
 name = name.chars                    #converting to array of letters
-#name = ("ironman").chars
 puts "Welcome to Hangman Game."
 puts "Guess the name of marvel character"
-#print name.join('')
 puts ""
 blanks = ('_'*name.length).chars 
 puts "You have #{name.length} no. of chances"
@@ -32,15 +29,8 @@ while j < ((name.length))  do       #Loop for number of chances
   puts "You have #{name.length-j-1} no. of chances left"
   print blanks.join('') 
   puts ""
-  if blanks == name   #Check for guessed word and original word and winnig condition
-    puts ""
-    puts "You Won"
-    break
-  end
+  if blanks == name then puts "You WON"; break; end
   j=j+1
 end
-if blanks != name #Loosing condition
-  puts ""
-  puts "You Loose"
-end
+puts "You Loose" if blanks != name
   puts blanks.join('')
