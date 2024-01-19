@@ -4,21 +4,14 @@
 #if grade is between 6-8 return middle school
 #if grade is between 9-12 return high school
 #if grade is between otherwise return college
-
-
 puts "Enter grade"
 grade = gets.to_i
-
 if (1..5) === grade
- puts "Elementary"
-
+  puts "Elementary"
 elsif (6..8) === grade
- puts "Middle School"
-
+  puts "Middle School"
 elsif (9..12) ===  grade
- puts "High School"
-
+  puts "High School"
 else 
- puts "College"
-
+  puts "College"
 end 
