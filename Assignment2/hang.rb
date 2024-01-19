@@ -33,4 +33,4 @@ while j < ((name.length))  do       #Loop for number of chances
   j=j+1
 end
 puts "You Loose" if blanks != name
-  puts blanks.join('')
+puts blanks.join('')
