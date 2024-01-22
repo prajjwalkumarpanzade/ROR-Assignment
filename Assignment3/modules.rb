@@ -24,7 +24,7 @@ end
 module LoanEligibility
   def self.GetLoan
     country = FindCountry.FindCname
-    if country != nil and country[:GDP] > 4_00_00_00_000
+    if country && country[:GDP] > 4_00_00_00_000
       puts "Eligible for loan"
     elsif country != nil 
       puts "Not Eligible for loan"
@@ -35,7 +35,7 @@ end
 module UnSeats
   def self.Seats
     country = FindCountry.FindCname
-    if country != nil and country[:State_of_country] == "Developed"
+    if country && country[:State_of_country] == "Developed"
       puts "Eligible for UN Seats"
     elsif country != nil
       puts "Not Eligible for UN Seats"    
@@ -46,7 +46,7 @@ end
 module WarPradiction
   def self.Prediction
     country = FindCountry.FindCname
-    if country != nil  and country[:Armey_Strength] > 7
+    if country && country[:Armey_Strength] > 7
         puts "Win War"
     elsif country != nil
         puts "Lose War"
