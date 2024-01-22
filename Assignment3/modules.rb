@@ -5,7 +5,7 @@ module GetCountry
   def self.GetCname
     puts "Enter Country Name"
     cname = gets.chomp.downcase
-    return  cname
+    return cname
   end
 end
 #Module to find Country name in Data
