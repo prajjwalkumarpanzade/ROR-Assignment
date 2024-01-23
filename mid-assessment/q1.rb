@@ -8,7 +8,7 @@ def prime_number(num)
     (2..num - 1).each do |i|
       return "#{num} is not a prime number" if (num % i).zero?
     end
-    retuen "#{num} is a prime number"
+    return "#{num} is a prime number"
   end
 end
 
