@@ -2,23 +2,23 @@
 # Personal Info module extract all the details from given text and display it.
 module PersonInfo
   def self.mobile_number(mystr)
-    puts "Mobile Number : #{mystr.match(/\d{10}/)}"
+    puts "Mobile Number : \n #{mystr.match(/\d{10}/)}"
   end
 
   def self.email_address(mystr)
-    puts "Email : #{mystr.match(/[\w.]+@[\w.]+/)}"
+    puts "Email : \n #{mystr.match(/[\w.]+@[\w.]+/)}"
   end
 
   def self.name(mystr)
-    puts "Name : #{mystr.match(/[A-Z]\w+ [A-Z]\w+/)}"
+    puts "Name : \n #{mystr.match(/[A-Z]\w+ [A-Z]\w+/)}"
   end
 
   def self.gender(mystr)
-    puts "Gender : #{mystr.match(/Gender - \w/)}"
+    puts "Gender : \n #{mystr.match(/Gender - \w/)}"
   end
 
   def self.amount(mystr)
-    puts "Salary : #{mystr.match(/Rs.\d+/)}"
+    puts "Salary : \n #{mystr.match(/Rs.\d+/)}"
   end
 
   def self.details(mystr)
