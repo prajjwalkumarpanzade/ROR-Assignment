@@ -34,8 +34,8 @@ end
 def main(mystr)
   i = 1
   while i.positive?
-    puts '1. Name'
-    puts '2. Email Address'
+    puts '1.Name'
+    puts '2.Email Address'
     puts '3.Mobile Number'
     puts '4.Gender'
     puts '5.Salary'
