@@ -1,14 +1,14 @@
 # Implement a program to check if a given string is a palindrome or not.
 def pallindrome?
   print 'Enter a string: '
-  pall = gets.chomp
-  len = pall.length
-  pall_rev = ''
+  given_string = gets.chomp
+  len = given_string.length
+  reverse_string = ''
   i = len - 1
   while i >= 0
-    pall_rev << pall[i]
+    reverse_string << given_string[i]
     i -= 1
   end
-  pall == pall_rev
+  given_string == reverse_string
 end
-puts pallindrome?
+pallindrome? ? (puts "Given string is pallindrome") : (puts "Given string is not pallindrome")
