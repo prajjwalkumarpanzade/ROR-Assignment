@@ -6,10 +6,12 @@ class User < ApplicationRecord
   before_validation :normalize_role,  on: :create 
   after_save :welcome
   has_many :transactions
+  
   private
   def welcome
     puts "Welcome #{self.name} to the Library Management System"
   end
+  
   def normalize_role
     self.role = role.downcase
   end
