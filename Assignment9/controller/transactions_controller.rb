@@ -3,12 +3,14 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.all
     render json: @transactions
   end
+  
   def create
     @transactions = Transaction.new(params.require(:transaction).permit(:book_id, :user_id, :issue_date, :return_date))
     if @transactions.save
       render json: @transactions, status: :created, location: @transactions
     end
   end
+  
   def update
     @transactions = Transaction.find(params[:id])
     if @transactions.update(params.require(:transaction).permit(:book_id, :user_id, :issue_date, :return_date))
@@ -17,6 +19,7 @@ class TransactionsController < ApplicationController
       render json: @transactions.errors, status: :unprocessable_entity
     end
   end
+  
   def show
     begin
       @transactions = Transaction.find(params[:id])
@@ -25,6 +28,7 @@ class TransactionsController < ApplicationController
       render json: { message: 'Transaction not found' }, status: 404
     end
   end
+  
   def destroy
     @transactions = Transaction.find(params[:id])
     if @transactions.destroy
