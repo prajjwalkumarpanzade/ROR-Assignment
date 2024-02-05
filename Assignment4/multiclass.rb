@@ -1,4 +1,5 @@
 #Class creation
+
 class Employee 
   def initialize(id,name,emailid,phone,salary)
     @id = id
@@ -25,7 +26,9 @@ class Employee
     puts "Salary : #{@salary}"
   end
 end
+
 #Object Creation
+
 emp1 = Employee.new(1,"Raj","raj@gmail.com",9112422666,10000)
 emp1.display_details
 emp1.display_salary
