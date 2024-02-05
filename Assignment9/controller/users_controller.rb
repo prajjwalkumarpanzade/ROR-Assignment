@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @users = User.all
     render json: @users
   end
+  
   def create
     @users = user_params
     @users = User.new(@users)
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
       render json: @users, status: :created, location: @users
     end
   end
+  
   def update
     @user = find_user
     if @user.update(params.require(:user).permit(:name, :address, :phone_no, :role))
@@ -18,6 +20,7 @@ class UsersController < ApplicationController
       render json: @user.errors, status: :unprocessable_entity
     end
   end
+  
   def show
     begin
       @user = find_user
@@ -26,6 +29,7 @@ class UsersController < ApplicationController
       render json: { message: 'User not found' }, status: 404
     end 
   end
+  
   def destroy
     @user = find_user
     if @user.destroy
@@ -39,6 +43,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :address, :phone_no, :role)
   end
+  
   def find_user
     User.find(params[:id])
   end
