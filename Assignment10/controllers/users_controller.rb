@@ -34,9 +34,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    set_user
-    @user.destroy
-    redirect_to action: :index
+    if set_user
+      @user.destroy
+      redirect_to action: :index
+    else
+      render json: { message: 'User not found' }, status: 404
   end
   
   private
