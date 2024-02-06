@@ -1,0 +1,116 @@
+1.Find the number of orders sent by each shipper.
+select ship_via,count(ship_via) from orders group by ship_via;
+
+2.Find the number of orders sent by each shipper, sent by each employee.
+select employee_id,ship_via,count(order_id) from orders group by employee_id,ship_via;
+
+3.Find  name  of  employees who has registered more than 100 orders.
+select employee_id,first_name,last_name,count(order_id) 
+from employees NATURAL JOIN orders
+GROUP BY employee_id HAVING count(order_id)>100;
+
+4.Find if the employees "Davolio" or "Fuller" have registered more than 25 orders.
+SELECT employee_id,first_name,last_name,count(order_id)
+FROM employees NATURAL JOIN orders
+GROUP BY employee_id having count(order_id)>25 AND (last_name in('Fuller','Davolio'));
+
+5.Find the customer_id and name of customers who had placed orders more than one time
+  and how many times they have placed the order.
+  
+SELECT customer_id,contact_name,count(order_id) as ID
+from customers
+NATURAL Join orders
+GROUP BY customer_id 
+HAVING count(order_id)>1
+order by ID desc;
+
+6.Select all the orders where the employee city and orders ship city are same.
+SELECT *
+FROM orders o
+JOIN employees e ON e.employee_id = o.employee_id
+WHERE e.city = o.ship_city;
+
+7.Create a report that shows the order ids and the associated employee names for orders that shipped.
+SELECT o.order_id,first_name,last_name
+FROM orders o JOIN employees e ON o.employee_id = e.employee_id;
+
+8.Create a report that shows the total quantity of products ordered fewer than 200.
+SELECT od.product_id,sum(od.quantity)
+FROM order_details od JOIN orders o ON od.order_id = o.order_id
+GROUP BY od.product_id HAVING count(od.order_id)<200;
+
+
+9.Create a report that shows the total number of orders by Customer since December 31, 1996
+  and the NumOfOrders is greater than 15.
+SELECT count(o.order_id) as ord,o.customer_id
+FROM customers c JOIN orders o ON c.customer_id = o.customer_id
+where o.order_date > '1996-12-31'
+GROUP BY o.customer_id
+HAVING count(o.order_id)>15
+ORDER BY ord DESC;
+
+10.Create a report that shows the company name, order id,
+   and total price of all products of which Northwind has sold more than $10,000 worth.
+   
+   
+--17-All orders placed by the customers belong to London city.
+SELECT o.order_id
+FROM orders o JOIN customers c ON o.customer_id = c.customer_id
+WHERE c.city = 'London';
+
+
+--18-All orders placed by the customers belong to London city.
+SELECT o.order_id
+FROM orders o JOIN customers c ON o.customer_id = c.customer_id
+WHERE c.city != 'London';
+
+
+20.Find the name of the company that placed order 10290.
+SELECT company_name
+FROM customers c JOIN orders o ON c.customer_id=o.customer_id
+WHERE o.order_id=10290;
+
+
+21-Find the Companies that placed orders in 1997.
+SELECT company_name,EXTRACT('Year' FROM o.order_date) as Year
+FROM customers c JOIN orders o ON c.customer_id=o.customer_id
+WHERE EXTRACT('Year' FROM o.order_date)='1997';
+
+
+
+22-Get the product name , count of orders processed
+SELECT product_name,count(order_id)
+FROM products p JOIN orders o ON p.product_id = o.order_id
+Group By product_name;
+
+
+
+
+23-Get the top 3 products which has more orders.
+
+SELECT od.product_id,count(od.order_id) as cnt
+FROM products p JOIN order_details od ON p.product_id = od.product_id
+GROUP BY od.product_id
+ORDER BY cnt DESC LIMIT 3;
+
+24-Get the list of employees who processed the order chai
+SELECT 
+    Employees.First_Name,
+    Employees.Last_Name
+FROM Employees
+JOIN Orders ON Employees.Employee_ID = Orders.Employee_ID
+JOIN Order_Details ON Orders.Order_ID = Order_Details.Order_ID
+JOIN Products ON Order_Details.Product_ID = Products.Product_ID
+WHERE Products.Product_Name = 'Chai';
+
+
+25-Get the shipper company who processed the order categories Seafood.
+SELECT Shippers.Shipper_ID,Shippers.Company_Name
+FROM Shippers,orders,Order_Details
+JOIN Order_Details ON Orders.Order_ID = Order_Details.Order_ID
+JOIN Products ON OrderDetails.Product_ID = Products.Product_ID
+JOIN Categories ON Products.Category_ID = Categories.Category_ID
+WHERE Categories.Category_name = 'Seafood';
+
+
+
