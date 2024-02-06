@@ -1,0 +1,37 @@
+<% if @users.blank? %>
+  <p style= "font-size: 30px;">No users found.</p>
+<% else %>
+<br>
+<br>
+<center>
+<h1>Users</h1>
+  <table class="table table-striped"  border='1' style='border-collapse:collapse'>
+    <thead>
+      <tr>
+        <th width="200"  style= "border: solid 2px;">Name</th>
+        <th width="200"  style= "border: solid 2px;">Email</th>
+        <th width="200"  style= "border: solid 2px;">Age</th>
+        <th width="200"  style= "border: solid 2px;">Action</th>
+        <th width="200"  style= "border: solid 2px;">Action</th>
+        <th width="200"  style= "border: solid 2px;">Action</th>
+      
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td width="200"  style= "border: solid 2px;"><%= user.name %></td>
+          <td width="200"  style= "border: solid 2px;"><%= user.email %></td>
+          <td width="200"  style= "border: solid 2px;"><%= user.age %></td>
+          <td width="200"  style= "border: solid 2px;"><%= link_to 'Update', edit_user_path(user) , method: :get%></td>
+          <td width="200"  style= "border: solid 2px;"><%= link_to 'Show', user%></td>
+          <td width="200"  style= "border: solid 2px;"><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <button style= "background-color:red;width:100px;height:50px;font-size: 20px;"><%= link_to 'New User', new_user_path %></button>
+  <center>
+<% end %>
